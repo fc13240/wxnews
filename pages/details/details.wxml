@@ -1,0 +1,18 @@
+<!--pages/details/details.wxml-->
+<view class="news-head-wrapper">
+  <view class="news-info">
+    <view class="news-title">{{newsDetail.title}}</view>
+    <view class="news-meta-info">
+      <view class="news-source">{{newsDetail.source}}</view>
+      <view class="news-date">{{newsDetail.date}}</view>
+      <view class="news-read-count">阅读量: {{newsDetail.readCount}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="news-content-wrapper">
+  <view class="news-section" wx:for="{{newsDetail.content}}" wx:key="id">
+    <view wx:if="{{item.type !== 'image'}}" class="news-text {{item.type === 'strong' ? 'strong' : ''}}">{{item.text}}</view>
+    <image wx:if="{{item.type === 'image'}}" class="news-image" mode="widthFix" src="{{item.src}}"></image>
+  </view>
+</view>

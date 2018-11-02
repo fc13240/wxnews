@@ -1,0 +1,60 @@
+<!--index.wxml-->
+
+
+
+<!-- 新闻分类选项卡 -->
+<view class="category-wrapper">
+  <view class="category-tab" bindtap="onTapCategory" data-category-code="{{item.code}}" wx:for="{{categories}}" wx:key="code">
+    <view class="category-text {{selectedCategoryCode === item.code ? 'active' : ''}}">{{item.name}}</view>
+    <view class="category-indicator {{selectedCategoryCode === item.code ? 'active' : ''}}"></view>
+  </view>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>
+<swiper circular current-item-id="{{selectedCategoryCode}}" bindchange="bindChange" style="height: {{swiperHeight}}rpx">
+  <block wx:for="{{categories}}" wx:key="{{item.code}}">
+    <swiper-item item-id="{{item.code}}">
+      <!-- 新闻内容 -->
+      <view class="news-wrapper">
+        <!-- 热点新闻容器 -->
+        <view class="hot-news-wrapper" data-id="{{newsListMap[item.code].hotNews.id}}" bindtap="toNewsDetail">
+          <!-- 热点新闻基本信息 -->
+          <view class="hot-news-info">
+            <view class="hot-news-title">{{newsListMap[item.code].hotNews.title}}</view>
+            <view class="hot-news-source-date">
+              <view class="hot-news-source">{{newsListMap[item.code].hotNews.source}}</view>
+              <view class="hot-news-date">{{newsListMap[item.code].hotNews.date}}</view>
+            </view>
+          </view>
+          <!-- 热点新闻TAG -->
+          <view class="hot-news-tag">热点</view>
+          <!-- 热点新闻图片 -->
+          <image class="hot-news-image" src="{{newsListMap[item.code].hotNews.firstImage}}" mode="scaleToFill"></image>
+        </view>
+
+        <!-- 新闻列表 -->
+        <view class="news-list-wrapper">
+          <view class="news-item" wx:for="{{newsListMap[item.code].newsList}}" wx:key="id" wx:for-item="news" data-id="{{news.id}}" bindtap="toNewsDetail">
+            <!-- 新闻基本信息 -->
+            <view class="news-item-info">
+              <view class="news-item-title">{{news.title}}</view>
+              <view class="news-item-source-date">
+                <view class="news-item-source">{{news.source}}</view>
+                <view class="news-item-date">{{news.date}}</view>
+              </view>
+            </view>
+            <!-- 新闻图片 -->
+            <image class="news-item-image" src="{{news.firstImage}}"></image>
+          </view>
+        </view>
+      </view>
+
+
+    </swiper-item>
+  </block>
+</swiper>

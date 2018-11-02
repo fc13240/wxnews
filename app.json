@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/details/details",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#6cb1f7",
+    "navigationBarTitleText": "简报·微刊",
+    "navigationBarTextStyle": "light",
+    "enablePullDownRefresh": true
+  }
+}
