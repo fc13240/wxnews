@@ -26,7 +26,7 @@
 
 ![滑动切换新闻类别](./swipe.jpeg)
 
-![新闻详情页](./detals.jpeg)
+![新闻详情页](./details.jpeg)
 
 
 
