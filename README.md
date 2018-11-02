@@ -1,3 +1,4 @@
+# 参考 https://github.com/vaanxy/wx-mini-news，在此基础上修改了一小部分代码。
 # 微信小程序实战——新闻小程序
 
 ## 项目简介
